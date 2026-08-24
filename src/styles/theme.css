@@ -1,0 +1,523 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  --background: #ffffff;
+  --foreground: oklch(0.145 0 0);
+  --card: #ffffff;
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: #007969;
+  --primary-foreground: #ffffff;
+  --secondary: oklch(0.95 0.0058 264.53);
+  --secondary-foreground: #030213;
+  --muted: #ececf0;
+  --muted-foreground: #717182;
+  --accent: #e9ebef;
+  --accent-foreground: #030213;
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 0, 0, 0.1);
+  --input: transparent;
+  --input-background: #f3f3f5;
+  --switch-background: #cbced4;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: #030213;
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /**
+  * Default typography styles for HTML elements (h1-h4, p, label, button, input).
+  * These are in @layer base, so Tailwind utility classes (like text-sm, text-lg) automatically override them.
+  */
+
+  html {
+    font-size: var(--font-size);
+  }
+
+  h1 {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h2 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h3 {
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  label {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  button {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  input {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.5;
+  }
+
+  /* Hide scrollbar for touch-friendly horizontal scrolling */
+  .hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari and Opera */
+  }
+
+  /* Android scroll optimization - free-form fluid scrolling.
+     Allow BOTH axes so native horizontal carousels (scroll-snap) can be
+     swiped. Vertical page scroll is unaffected; JS-driven carousels keep
+     their own inline `touch-action: pan-y` so they are not double-handled. */
+  @media screen and (max-width: 1023px) {
+    * {
+      -webkit-tap-highlight-color: transparent;
+      touch-action: pan-x pan-y;
+    }
+
+    /* Disable snap scrolling on mobile */
+    .overflow-y-scroll {
+      scroll-snap-type: none !important;
+      overscroll-behavior-y: contain;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Remove any snap points on mobile sections */
+    section {
+      scroll-snap-align: none !important;
+    }
+  }
+}
+
+/* Hide scrollbars everywhere */
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+*::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Performance Optimizations */
+/* Prevent layout shifts and optimize rendering */
+section {
+  contain: layout style paint;
+  content-visibility: auto;
+  min-height: 100vh;
+}
+
+/* Reserve space for sections to prevent shifts */
+section[id] {
+  contain-intrinsic-size: auto 100vh;
+}
+
+/* Accessible keyboard focus — gold ring stays visible on both white and teal
+   backgrounds. Only shows for keyboard users (:focus-visible), never on click. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[role="button"]:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid #ffc857;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Mobile: the full-viewport section height is a desktop scroll-snap treatment.
+   On mobile (snap already disabled) it forces content-light sections to fill the
+   screen, leaving large dead-space gaps. Let non-hero sections size to their
+   content instead. The hero keeps full height via its inline height + #hero rules. */
+@media screen and (max-width: 1023px) {
+  section:not(#hero) {
+    min-height: auto !important;
+    contain: layout style;
+  }
+  section:not(#hero)[id] {
+    contain-intrinsic-size: auto;
+  }
+}
+
+/* GPU acceleration for animated elements */
+[class*="motion-"],
+[class*="animate-"],
+.slick-slide,
+.carousel-item {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Optimize images for faster rendering - larger intrinsic size */
+img {
+  content-visibility: auto;
+  contain-intrinsic-size: 800px 600px;
+  max-width: 100%;
+}
+
+/* Only apply height: auto to images that aren't explicitly sized */
+img:not([class*="h-"]):not([style*="height"]) {
+  height: auto;
+}
+
+video, iframe {
+  content-visibility: auto;
+  contain-intrinsic-size: 100vw 56.25vw; /* 16:9 aspect ratio */
+}
+
+/* Optimize carousels and sliders */
+.slick-track,
+.carousel-track {
+  will-change: transform;
+  contain: layout style paint;
+}
+
+/* Prevent layout shift on lazy loaded content */
+.lazy-loading {
+  min-height: 100vh;
+  contain: size layout paint;
+}
+
+/* Optimize scroll containers */
+[style*="overflow"] {
+  contain: layout paint;
+  will-change: scroll-position;
+}
+
+/* Prevent shifts from dynamic content */
+[class*="Suspense"] {
+  min-height: 100vh;
+  contain: size layout;
+}
+
+/* Reserve space for fixed navigation to prevent layout shift */
+nav[class*="fixed"] {
+  height: 82px;
+  contain: layout style paint;
+}
+
+@media (min-width: 1024px) {
+  nav[class*="fixed"] {
+    height: 80px;
+  }
+}
+
+/* Add space for navigation so content doesn't jump */
+body {
+  padding-top: 0;
+}
+
+/* Optimize first contentful paint */
+#hero {
+  contain: layout style;
+  content-visibility: auto;
+}
+
+/* ==========================================================================
+   Swift Rooms Design System
+   Extracted from https://swiftrooms-newbuild.vercel.app/ so the landing page
+   is visually indistinguishable from the main website. Semantic component
+   classes below mirror the reference site's own utility layer exactly.
+   ========================================================================== */
+:root {
+  /* Brand — Swift Rooms teal */
+  --brand: #007969;
+  --brand-dark: #005a50;
+  --brand-mid: #006156;
+  --brand-light: #f0fdf4;
+  --brand-tint: #e6f4f1;
+  --brand-shadow: 0 16px 40px #0079691f;
+
+  /* Neutrals / ink */
+  --sr-black: #1c1c1e;
+  --sr-dark: #3a3a3c;
+  --sr-mid: #6b7280;
+  --sr-line: #e5e7eb;
+  --sr-bg: #ffffff;
+  --sr-bg-alt: #f8f9fa;
+  --sr-bg-dark: #030213;
+}
+
+/* Base body ink + rendering — Barlow, matching the reference. Loaded after the
+   FCP system-font rule above so this wins once webfonts are ready. */
+body {
+  font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  color: var(--sr-black);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Font-role helpers */
+.font-heading { font-family: 'Exo', sans-serif; }
+.font-accent  { font-family: 'Rajdhani', sans-serif; }
+.font-body    { font-family: 'Barlow', sans-serif; }
+
+/* Type scale — architectural headings (Exo), uppercase labels (Rajdhani) */
+.text-display  { font-family:'Exo',sans-serif; font-weight:800; font-size:clamp(3.75rem,10vw,10rem); line-height:.93; letter-spacing:-.03em; }
+.text-headline { font-family:'Exo',sans-serif; font-weight:700; font-size:clamp(2rem,5vw,4.5rem); line-height:1.05; letter-spacing:-.015em; }
+.text-title    { font-family:'Exo',sans-serif; font-weight:600; font-size:clamp(1.5rem,3vw,2.75rem); line-height:1.1; letter-spacing:-.01em; }
+.text-label    { font-family:'Rajdhani',sans-serif; font-weight:600; font-size:.75rem; letter-spacing:.15em; text-transform:uppercase; }
+.text-body-lg  { font-family:'Barlow',sans-serif; font-weight:400; font-size:clamp(1rem,1.2vw,1.125rem); line-height:1.7; }
+
+/* Buttons — sharp, uppercase, Rajdhani. CRO hierarchy:
+   .btn-brand = primary (Get Free Quote), .btn-outline = tertiary (Visit Showroom),
+   .btn-whatsapp = secondary (WhatsApp Expert). */
+.btn-brand,
+.btn-outline,
+.btn-whatsapp {
+  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+  padding:.875rem 2rem;
+  font-family:'Rajdhani',sans-serif; font-weight:600; font-size:.8rem;
+  letter-spacing:.12em; text-transform:uppercase;
+  border:none; cursor:pointer; border-radius:2px;
+}
+.btn-brand    { background:var(--brand); color:#fff; transition:background .25s, transform .2s; }
+.btn-brand:hover { background:var(--brand-dark); }
+.btn-outline  { background:transparent; color:var(--brand); border:1.5px solid var(--brand); transition:all .25s; }
+.btn-outline:hover { background:var(--brand); color:#fff; }
+.btn-whatsapp { background:#25D366; color:#fff; transition:background .25s, transform .2s; }
+.btn-whatsapp:hover { background:#1da851; }
+.btn-brand:active, .btn-outline:active, .btn-whatsapp:active { transform:scale(.98); }
+
+/* Eyebrow / USP badge */
+.usp-badge {
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding:.375rem .875rem;
+  font-family:'Rajdhani',sans-serif; font-weight:600; font-size:.75rem;
+  letter-spacing:.08em; text-transform:uppercase;
+  color:var(--brand); background:#00796914; border:1px solid #00796933; border-radius:2px;
+}
+
+/* Brand divider — the 40×3px teal rule under section eyebrows */
+.divider-brand { width:40px; height:3px; background:var(--brand); border-radius:2px; }
+
+/* Architectural card lift with brand-tinted shadow */
+.card-hover { transition:transform .3s, box-shadow .3s; }
+.card-hover:hover { transform:translateY(-4px); box-shadow:var(--brand-shadow); }
+.card-hover:active { transform:scale(.98); }
+
+/* Surface tokens for sections/cards — sharp corners, hairline borders */
+.sr-card {
+  background:#fff; border:1px solid var(--sr-line); border-radius:4px;
+}
+.bg-brand-tint { background:var(--brand-tint); }
+.bg-section-alt { background:var(--sr-bg-alt); }
+
+/* ---- Mobile ergonomics -------------------------------------------------- */
+/* Comfortable minimum tap target (WCAG 2.5.5) */
+.tap-target { min-width: 44px; min-height: 44px; }
+
+/* iPhone safe-area helpers */
+.safe-bottom { padding-bottom: max(0.75rem, env(safe-area-inset-bottom)); }
+.safe-top { padding-top: env(safe-area-inset-top); }
+
+/* Mobile section rhythm on an 8px system — consistent vertical breathing room
+   for content-height sections. Desktop keeps its own larger spacing. */
+@media (max-width: 1023px) {
+  .section-rhythm { padding-top: 3rem; padding-bottom: 3rem; }
+}
+
+/* Slick carousel dots — brand teal pill indicators (matches gallery/products) */
+.slick-dots {
+  display:flex !important; justify-content:center; align-items:center; gap:.375rem;
+  padding:0; margin:1.25rem 0 0; list-style:none;
+}
+.slick-dots li { width:auto; height:auto; margin:0; }
+.slick-dots li button { width:auto; height:auto; padding:0; }
+.slick-dots li button:before {
+  content:''; display:block; width:8px; height:8px; border-radius:9999px;
+  background:var(--brand); opacity:.25; transition:opacity .3s, width .3s;
+}
+.slick-dots li.slick-active button:before { opacity:1; width:22px; }
+
+/* ==========================================================================
+   Apple-inspired mobile experience layer
+   Confident type, spacious rhythm, premium rounded surfaces — applied on
+   mobile (<1024px) so the page never reads as a compressed desktop site.
+   Desktop styling is untouched.
+   ========================================================================== */
+
+/* Never allow horizontal page scroll on mobile (technical requirement).
+   `clip` guards overflow without creating a scroll container, so nested
+   horizontal carousels (react-slick, native scroll-snap) keep working. */
+html, body { overflow-x: clip; }
+
+/* All rounded-card / heading / rhythm helpers below are scoped to mobile
+   (<=1023px) so the existing desktop styling (its own lg:text-* / border /
+   radius utilities) is left completely untouched. */
+@media (max-width: 1023px) {
+  /* Confident, headline-first section titles. */
+  .sr-heading {
+    font-family: 'Exo', sans-serif;
+    font-size: clamp(1.75rem, 7.5vw, 2.125rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+
+  /* Short, calm supporting copy under a headline. */
+  .sr-subheading {
+    font-size: clamp(0.95rem, 3.8vw, 1.0625rem);
+    line-height: 1.6;
+    color: var(--sr-dark);
+  }
+
+  /* Premium rounded content card — soft shadow, hairline ring, generous radius. */
+  .sr-card-premium {
+    background: #fff;
+    border-radius: 1.25rem;
+    box-shadow: 0 1px 2px rgba(16,24,40,.04), 0 12px 32px -12px rgba(16,24,40,.12);
+    border: 1px solid rgba(16,24,40,.06);
+  }
+
+  /* Spacious Apple-style vertical rhythm for mobile sections. */
+  .sr-section { padding-top: 4rem; padding-bottom: 4rem; }
+}
+
+/* Eyebrow label above a headline — quiet, uppercase, brand-tinted. */
+.sr-eyebrow {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brand);
+}
+
+/* Smooth, native-feeling in-page scrolling. */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+/* Large-screen type upscaling — the design system is rem-based, so nudging the
+   root font-size on 2K/4K scales the whole type ramp and rem spacing up with the
+   viewport, preventing the "tiny island in a huge gutter" look. 1920 (Full HD)
+   deliberately keeps the 16px design baseline ("no oversized text"). */
+@media (min-width: 2560px) { :root { --font-size: 18px; } }
+@media (min-width: 3840px) { :root { --font-size: 20px; } }
