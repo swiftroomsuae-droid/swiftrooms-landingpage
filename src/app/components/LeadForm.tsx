@@ -4,6 +4,7 @@ import { ChevronRight, ChevronLeft, Check, ArrowRight, Building, Home, Store, Do
 import svgPaths from '../../imports/svg-c8s3lgkv08';
 import svgPathsSelection from '../../imports/svg-ws080e5oua';
 import { turnstileEnabled, getTurnstileToken } from '../utils/turnstile';
+import { trackLeadFormSubmit, trackThankYouPageView, trackWhatsAppClick } from '../../lib/tracking';
 
 // Country codes for phone number validation
 const countryCodes = [
@@ -348,6 +349,14 @@ export function LeadForm({ autoOpen = false, ctaVariant = 'green', listenForOpen
   ] as const;
   const totalSteps = isMobile ? MOBILE_STEP_KEYS.length : 2;
 
+  // Fire the thank-you page-view event exactly once per successful reveal of
+  // the success screen (not on every re-render while it's showing).
+  useEffect(() => {
+    if (currentStep >= totalSteps) {
+      trackThankYouPageView();
+    }
+  }, [currentStep, totalSteps]);
+
   const handleNext = () => {
     if (currentStep < totalSteps) {
       setCurrentStep(currentStep + 1);
@@ -462,6 +471,7 @@ export function LeadForm({ autoOpen = false, ctaVariant = 'green', listenForOpen
       }
       // Remember this enquiry so an accidental resubmit doesn't double-send.
       submittedSignatureRef.current = signature;
+      trackLeadFormSubmit();
       setCurrentStep(totalSteps);
     } catch (err) {
       console.error('[LeadForm] submission error:', err);
@@ -828,6 +838,7 @@ export function LeadForm({ autoOpen = false, ctaVariant = 'green', listenForOpen
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={trackWhatsAppClick}
                 className="btn-whatsapp w-full text-sm lg:text-base shadow-md hover:shadow-lg transition-all duration-300"
               >
                 <MessageCircle className="w-4 h-4" />
